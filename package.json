@@ -1,0 +1,64 @@
+{
+  "name": "electron-webpack4-simple-example",
+  "productName": "ewse",
+  "description": "Electron simple example with webpack4.",
+  "keywords": [
+    "electron",
+    "webpack4"
+  ],
+  "version": "1.0.0",
+  "author": "say-thou",
+  "license": "MIT",
+  "main": "./app/main.js",
+  "build": {
+    "appId": "say-thou.ml.ex011",
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "installerLanguages": "ja_JP",
+      "createDesktopShortcut": false,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": false
+    },
+    "files": [
+      "app/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraFiles": [
+      {
+        "from": "./licenses-of-others",
+        "to": "./licenses-of-others"
+      }
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "outdir"
+    },
+    "publish": null
+  },
+  "scripts": {
+    "start": "node build/start.js",
+    "postinstall": "electron-builder install-app-deps",
+    "release": "webpack --config=build/webpack.app.config.js --env=production && electron-builder"
+  },
+  "dependencies": {
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "electron": "^2.0.5",
+    "electron-builder": "^20.24.5",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "license-info-webpack-plugin": "^1.0.2",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-merge": "^4.1.3",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
